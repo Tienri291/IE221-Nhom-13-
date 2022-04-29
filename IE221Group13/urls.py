@@ -19,6 +19,5 @@ import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cherrybeauty/',include('CherryBeauty.urls')),
-    path('__debug__/', include('debug_toolbar.urls')),
+    path('',include('CherryBeauty.urls')),
 ]

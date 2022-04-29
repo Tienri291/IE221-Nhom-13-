@@ -1,1 +1,27 @@
-<h1> Hello </h1>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}CherryBeauty{% endblock %}
+{% block linkcss%}
+<link rel="stylesheet" href="{% static "css/home.css" %}" type="text/css">
+<link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+<link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+{% endblock %}
+
+{% block banner%}
+<div class="section-1">
+    <div class="container-fluid">
+        <img src="{% static "img/img_banner/banner_home.jpg" %}" width="100%" height="100%">
+    </div>
+</div>
+{% endblock %}
+
+{% block main%}
+
+{% endblock %}
+
+{% block linkjs %}
+<script src="jquery.min.js"></script>
+<script src="owlcarousel/owl.carousel.min.js"></script>
+{% endblock %}

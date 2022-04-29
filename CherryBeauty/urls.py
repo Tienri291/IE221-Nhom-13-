@@ -3,5 +3,6 @@ from . import views
 
 #urlcof
 urlpatterns = [
-    path('', views.home_page)
+    path('', views.home_page),
+
 ]
