@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    color: white;
+}
 /*============Header============*/
 .header{
     background-color: #C8F2EF;
@@ -107,13 +110,15 @@ nav li a{
     text-decoration: none;
 }
 .active{
-    border-bottom: 2px solid black ;
+    border-bottom: 2px solid #137ACA ;
     font-family: quicksan-medium; 
+    
 }
 
 nav li:hover{
-    border-bottom: 2px solid black ;
+    border-bottom: 2px solid #137ACA ;
     font-family: quicksan-medium; 
+    color: #C8F2EF;
 }
 
 /*============Footer============*/
