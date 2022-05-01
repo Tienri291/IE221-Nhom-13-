@@ -29,6 +29,13 @@ body{
     align-items: center;
     justify-content: center;
 }
+.box{
+    display: flex;
+    height: 50px;
+    color: black;
+    align-items: center;
+    justify-content: space-around
+}
 .logo{
     display: flex;
     height: 60px;
@@ -36,11 +43,12 @@ body{
     justify-content: center; 
 }
 input[name="search"]{
+    font-family: quicksan;
     border-radius: 15px;
     transition: all .3s ease-in-out;
     width: 80%;
-    border: 1px solid #ccc;
-    font-size: 12px;
+    border: 1px solid rgb(180, 179, 179);
+    font-size: 14px;
     height: 30px;
     line-height: 1.15;
     overflow: visible;
@@ -58,9 +66,12 @@ input[name="search"]{
     width: 26px;
     text-transform: none;
 }
+
 .header__DK{
-    font-family: quicksan;
-	border: 1.5px solid black;
+    font-family: quicksan-medium;
+	border: 2px solid #422800;
+    color: #422800;
+    font-weight: 600;
     background-color: #C8F2EF;
 	border-radius: 15px;
 	width: 90px;
@@ -71,18 +82,38 @@ input[name="search"]{
 }
 
 .header__DN{
-    font-family: quicksan;
-    text-decoration: none;
-    border: 1px solid #FBBE77;
-	border-radius: 15px;
-	width: 114px;
-	height: 32px;
-	background-color:#FBBE77;
-    color: black;
-    font-size: 15px;
-    cursor: pointer;
+  font-family: quicksan-bold;
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 90px;
+  height: 30px;
 }
 
+.header__DN:hover {
+  background-color: #fff;
+}
+
+.header__DN:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .header__DN {
+    min-width: 120px;
+  }
+}
 h1{
     font-family: quicksan-bold; 
 }
@@ -281,3 +312,5 @@ footer{
      margin-block-end: 0em;
      text-align: left;
  }
+
+ 

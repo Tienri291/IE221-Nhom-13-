@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% load static %}
+ 
+{% block title%}CherryBeauty{% endblock %} 
+{% block linkcss%} 
+<link rel="stylesheet" href="{% static "css/article_detail.css" %}" type="text/css">
+<link rel="stylesheet" href="owlcarousel/owl.carousel.min.css" />
+<link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css" />
+{% endblock %} 
+
+{% block banner%}
+{% endblock %} 
+
+{% block main%}
+<div class = "content">
+<div class = "container-lg">
+<div class = "row">
+<h1 class ="articaletitle">{{post.title}}</h1>
+</div>
+<div class ="row">
+    <small class="articaledatepost"><i>{{post.date_added}}</i></small> 
+</div>
+<div class = "row"> {{post.intro}} </div>
+<div class = "row justify-center">
+    <img src="{{ post.header_image.url }}" width="auto" height="700px"/>
+</div>
+<div class = "row"> {{post.body|safe}} </div>
+<div>
+</div>
+{% endblock %} 
+
+{% block linkjs %}
+<script src="jquery.min.js"></script>
+<script src="owlcarousel/owl.carousel.min.js"></script>
+{% endblock %}

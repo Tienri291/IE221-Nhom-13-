@@ -1,0 +1,20 @@
+.blog{
+    color: #0E5776;
+    font-family: quicksan-bold;  
+}
+h1{
+    color: #0E5776;
+    font-size: 30px;
+    font-family: quicksan-bold;
+    text-align: center;
+    margin-top: 10px;
+}
+main{
+    margin-top: 150px;
+    margin-bottom: 100px;
+}
+
+.articaledatepost{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
