@@ -3,7 +3,7 @@ function register(){
     window.location.href = '/register';
 }
 function signin(){
-  window.location.href = '/signin';
+  window.location.href = '/login';
 }
 
 

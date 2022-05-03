@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}CherryBeauty{% endblock %}
+{% block linkcss%}
+<link rel="stylesheet" href="{% static "css/log_in.css" %}" type="text/css">
+<link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+<link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+{% endblock %}
+
+{% block banner%}
+{% endblock %}
+
+{% block main%}
+<div class = "pop-up">
+    <div class="title">
+        <h1>Đăng nhập</h1>
+    </div>
+    <div class="col-left">
+            <a href="/"><img src="{%static "img/img_body/item.png" %}"></a>
+    </div>
+    <div class="col-right">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+                <h2>Đăng nhập tài khoản của bạn</h2>
+
+
+                <div class='username'>
+                    <i class="fa-solid fa-user" style="color: rgb(134, 134, 134);"></i>
+                    <label type="text" placeholder="Tên tài khoản">
+                    <input name="username" type="text" placeholder="Tên đăng nhập" required>
+                </div>
+                <div class='password'>
+                    <i class="fa-solid fa-key" style="color: rgb(134, 134, 134);"></i>
+                    <label  type="text" placeholder="Mật khẩu">
+                    <input name="password" type="password" placeholder="Mật khẩu" pattern=".{6,}" required>
+                </div>
+                <div class ="quenmatkhau">
+                <a href="#">Quên mật khẩu</a>
+                </div>
+
+                <div class="control-button">
+                    <button type="submit" class="dnbutton" >Đăng nhập</button>
+                    <button class="dkbutton" onclick="register()">Đăng ký</button>
+                </div>
+
+                <p>Hoặc đăng nhập bằng:</p>
+                
+                <div class="order-logo">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-google-plus-g"></i>
+                </div>
+        </fieldset>
+    </form>
+    </div>
+</div>
+    <!--{% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+        {% endif %}-->
+    
+{% endblock %}
+
+{% block linkjs %}
+<script src="{% static 'js/login.js' %}"></script>
+<script src="jquery.min.js"></script>
+<script src="owlcarousel/owl.carousel.min.js"></script>
+{% endblock %}

@@ -3,6 +3,9 @@ import imp
 from django.db import models
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.contrib.auth.models import User
+from django.core.validators import RegexValidator
+
 # Create your models here.
 
 class Post(models.Model):
@@ -22,3 +25,4 @@ class Post(models.Model):
         except:
             url = ''
         return url
+ 
