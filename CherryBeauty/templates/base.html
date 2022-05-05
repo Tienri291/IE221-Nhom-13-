@@ -42,9 +42,22 @@
                         </div>
 
                         <div class="col-3">
-                            <div class="box justify-">
+                            <div class="box justify-around">
+                                {% if user.is_authenticated %}
+                                <div class ="username">
+                                <button class ="profile"><i class="fa-solid fa-circle-user"></i></button>
+                                <a href = "#"> {{user.get_username}}</a>
+                                </div>
+                                <div class = "signout">
+                                    <a href= "{% url 'logout' %}"><button class="header__DX" >Đăng xuất <i class="fa-solid fa-arrow-right-from-bracket"></i></button></a>
+                                </div>
+
+
+                                {% else %}
+
                                 <button class="header__DK" onclick="register()">Đăng ký</button>
                                 <button class="header__DN" onclick="signin()">Đăng nhập</button>
+                                {% endif %}
 
                             </div>
                         </div>

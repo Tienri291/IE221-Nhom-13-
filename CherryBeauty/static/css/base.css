@@ -66,21 +66,52 @@ input[name="search"]{
     width: 26px;
     text-transform: none;
 }
-
-.header__DK{
+.username a{
+    text-decoration: none;
+    color: #9A1B65;
+    font-family: quicksan-medium;
+    font-size: 17px;
+}
+.username a:hover{
+    border-bottom: 1px solid #0E6B93;
+    color: #0E6B93;
+}
+.profile{
+    border: none;
+    background-color: #C8F2EF;
+    padding: 0px;
+    color: #9A1B65;
+    font-size: 18px;
+    cursor: pointer;
+}
+.header__DK,.header__DX{
     font-family: quicksan-medium;
 	border: 2px solid #422800;
     color: #422800;
     font-weight: 600;
     background-color: #C8F2EF;
 	border-radius: 15px;
-	width: 90px;
+	width: max-content;
 	height: 30px;
     align-items: center;
     font-size: 15px;
     cursor: pointer;
 }
+.header__DK{
+    padding-left: 6px;
+    padding-right: 6px;
+}
+.header__DK:hover{
+    background-color: #422800;
+    color: #fbeee0;
 
+}
+.header__DX{
+    background-color: #fbeee0;
+    color: #422800;
+    padding-left: 3px;
+    padding-right: 3px;
+}
 .header__DN{
   font-family: quicksan-bold;
   background-color: #fbeee0;

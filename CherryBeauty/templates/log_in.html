@@ -21,19 +21,19 @@
             <a href="/"><img src="{%static "img/img_body/item.png" %}"></a>
     </div>
     <div class="col-right">
+    <h2>Đăng nhập tài khoản của bạn</h2>
     <form method="POST">
         {% csrf_token %}
         <fieldset>
-                <h2>Đăng nhập tài khoản của bạn</h2>
 
 
                 <div class='username'>
-                    <i class="fa-solid fa-user" style="color: rgb(134, 134, 134);"></i>
+                    <i class="fa-solid fa-user" style="color:  #D84A8C;"></i>
                     <label type="text" placeholder="Tên tài khoản">
                     <input name="username" type="text" placeholder="Tên đăng nhập" required>
                 </div>
                 <div class='password'>
-                    <i class="fa-solid fa-key" style="color: rgb(134, 134, 134);"></i>
+                    <i class="fa-solid fa-key " style="color:  #D84A8C; "></i>
                     <label  type="text" placeholder="Mật khẩu">
                     <input name="password" type="password" placeholder="Mật khẩu" pattern=".{6,}" required>
                 </div>
@@ -48,10 +48,10 @@
 
                 <p>Hoặc đăng nhập bằng:</p>
                 
-                <div class="order-logo">
-                    <i class="fa-brands fa-facebook-f"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                    <i class="fa-brands fa-google-plus-g"></i>
+                <div class="other-logo">
+                    <i class="fa-brands fa-facebook-f" style="color: #137ACA; font-size: 2em"></i>
+                    <i class="fa-brands fa-instagram" style="color: #CD0000; font-size: 2em"></i>
+                    <i class="fa-brands fa-google-plus-g" style="color: #FF5C00;font-size: 2em"></i>
                 </div>
         </fieldset>
     </form>

@@ -1,13 +1,17 @@
+from typing import Generic
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, request, response
+from django.template import context
 from django.views.generic import ListView
 
 from CherryBeauty.models import Post
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
-from django.views import View
-
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
+
+from .form import CreateUserForm
+from django.contrib import messages
 # Create your views here.
 def home_page(request):
     return render(request, 'home.html')
@@ -18,11 +22,38 @@ def about_us(request):
 def support(request):
     return render(request,'support.html')
 
-def login(request):
-    return render(request,'log_in.html')
-
 def register(request):
-    return render(request,'register.html')
+    form = CreateUserForm(request.POST)
+
+    if form.is_valid():
+        form.save()
+        user = form.cleaned_data.get('username')
+        messages.success(request, 'Tài khoản đã được tạo với tên đăng nhập: ' + user)
+
+        return redirect('login')
+
+    context = {'form':form}
+    return render(request,'register.html',context)
+
+def log_in(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username = username, password = password)
+
+        if user is not None:
+            login(request,user)
+            return redirect('home')
+
+
+    context = {}
+    return render(request,'log_in.html',context) 
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
 
 def blog_page(request):
     p = Paginator(Post.objects.all(),5)
@@ -35,3 +66,6 @@ def blog_page(request):
 def article_detail(request,slug):
     article = Post.objects.get(slug = slug)
     return render(request, 'article_detail.html', {'post':article}) 
+
+
+#@login_required(login_url="login")
