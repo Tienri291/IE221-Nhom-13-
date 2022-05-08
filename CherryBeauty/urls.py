@@ -10,6 +10,10 @@ urlpatterns = [
     path('login/',views.log_in, name="login"),
     path('logout/',views.logoutUser, name = "logout"),
     path('blog/',views.blog_page, name="blog"),
+    path('product/',views.product_page, name ="product"),
+    path('makeup/',views.makeuppage, name ="makeup"), 
+    path('brand/',views.brand,name="brand"),
+    path('<slug:slug>/',views.item_detail,name="item_detail"),
     path('<slug:slug>/',views.article_detail ,name="article_detail"),
 
 ]

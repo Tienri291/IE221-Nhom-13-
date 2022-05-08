@@ -22,6 +22,45 @@ body{
     background-color: white;
     height: 50px;
 }
+.dropmenuproduct{
+    display: none;
+    position: absolute;
+    background-color:#c0e2f1;
+    min-width: max-content;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+.dropmenuproduct li{
+    padding-top: 5px;
+}
+.product:hover {
+    text-decoration-line: none;
+}
+.product:hover .dropmenuproduct{
+    display: block;
+
+}
+.menu ul li:hover .dropmenuproduct{
+    display: block;
+    position: absolute;
+    background-color: #C8F2EF;
+    padding-top: 15px;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding-left: 10px;
+    width: max-content;
+}
+.dropmenuproduct li:hover{
+    background-color: #D84A8C;
+    border-bottom: none;
+
+}
+.dropmenuproduct li:hover a{
+    color: #fff;
+}
 .box1{
     display: flex;
     height: 50px;
@@ -75,6 +114,14 @@ input[name="search"]{
 .username a:hover{
     border-bottom: 1px solid #0E6B93;
     color: #0E6B93;
+}
+.cart{
+    background-color: #C8F2EF;
+    border: none;
+    cursor: pointer;
+}
+.cart i{
+    font-size: 17px;
 }
 .profile{
     border: none;
@@ -154,6 +201,9 @@ h1{
 }
 
 /*nav*/
+.navigation{
+    border-bottom: 0.5px solid #8a8a8a;
+}
 nav{
     width: 100%;
 }
@@ -162,10 +212,6 @@ nav ul{
     justify-content: space-between;
     width: 90%;
     align-items: center;
-}
-nav ul li{
-    margin-left: 56px ;
-
 }
 nav li a{
     color: black;
@@ -176,8 +222,11 @@ nav li a{
     font-family: quicksan-medium; 
     
 }
-
-nav li:hover{
+.prime li{
+    height: 30px;
+    text-align: center;
+}
+.prime li:hover{
     border-bottom: 2px solid #137ACA ;
     font-family: quicksan-medium; 
     color: #C8F2EF;

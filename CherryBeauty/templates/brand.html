@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}CherryBeauty | Thương hiệu{% endblock %}
+{% block linkcss%}
+<link rel="stylesheet" href="{% static "css/brand.css" %}" type="text/css">
+{% endblock %}
+
+{% block banner%}
+{% endblock %}
+
+{% block main%}
+<h1> THƯƠNG HIỆU </h1>
+
+<div class = "container-lg">
+<div class ="brand_item">
+{% for brand in brand_list%}
+
+    <div class="boxs">
+        {% if brand.image %}
+        <div class = "img">
+            <img src="{{ brand.image.url }}"/>
+        </div>
+        {% endif %}
+        <div class = "name">
+            {{ brand.title }}
+        </div>
+    </div>
+
+{% endfor %}
+</div>
+</div>
+
+{% endblock %}
+
+{% block linkjs %}
+{% endblock %}

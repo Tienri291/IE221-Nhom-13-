@@ -48,6 +48,9 @@
                                 <button class ="profile"><i class="fa-solid fa-circle-user"></i></button>
                                 <a href = "#"> {{user.get_username}}</a>
                                 </div>
+                                <button class ="cart"> 
+                                <i class="fa-solid fa-basket-shopping fa-lg"></i>
+                                </button>
                                 <div class = "signout">
                                     <a href= "{% url 'logout' %}"><button class="header__DX" >Đăng xuất <i class="fa-solid fa-arrow-right-from-bracket"></i></button></a>
                                 </div>
@@ -77,18 +80,26 @@
                             <div class="col-1">
 
                             </div>
-                            <div class="col-8 ">
-                                <nav>
-                                    <ul class="row">
+                            <div class="col-9 ">
+                                <nav class="menu">
+                                    <ul class="prime row">
                                         <li><a class="home" href="/">TRANG CHỦ</a></li>
                                         <li><a class="intro" href="/aboutus">GIỚI THIỆU</a></li>
-                                        <li><a class="product" href="#">SẢN PHẨM</a></li>
+                                        <li><a class="product" href="/product">SẢN PHẨM</a>
+                                            <div class = 'dropmenuproduct'>
+                                                <ul>
+                                                    <li><a href="/makeup">Makeup</a></li>
+                                                    <li><a href="/skincare">Chăm sóc da</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
                                         <li><a class="blog" href="/blog">BLOG</a></li>
+                                        <li><a class="brand" href="/brand">THƯƠNG HIỆU</a></li>
                                         <li><a class="support" href="/support">HỖ TRỢ</a></li>
                                     </ul>
                                 </nav>
                             </div>
-                            <div class="col-3">
+                            <div class="col-2">
                                 <div class="search-container">
                                     <form action="/action_page.php">
                                       <input name="search" type="text" placeholder="Tìm kiếm.." name="search">

@@ -1,10 +1,11 @@
+import collections
 from typing import Generic
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, request, response
 from django.template import context
 from django.views.generic import ListView
 
-from CherryBeauty.models import Post
+from CherryBeauty.models import Collection, Post,Product,Brand
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -21,6 +22,10 @@ def about_us(request):
 
 def support(request):
     return render(request,'support.html')
+
+def brand(request):
+    brand_list = Brand.objects.all()
+    return render(request,'brand.html',{'brand_list': brand_list})
 
 def register(request):
     form = CreateUserForm(request.POST)
@@ -66,6 +71,21 @@ def blog_page(request):
 def article_detail(request,slug):
     article = Post.objects.get(slug = slug)
     return render(request, 'article_detail.html', {'post':article}) 
+
+
+def product_page(request):
+    makeup_list = Product.objects.filter(collection = 1)
+    skincare_list = Product.objects.filter(collection = 2)
+    return render(request,'product.html',{'makeup_list': makeup_list,'skincare_list': skincare_list})
+
+def item_detail(request,slug):
+    item = Product.objects.get(slug = slug)
+    return render(request,'item_detail.html',{'item':item})
+
+def makeuppage(request):
+    makeup_list = Product.objects.filter(collection = 1)
+    return render(request,'product.html',{'makeup_list': makeup_list})
+
 
 
 #@login_required(login_url="login")
