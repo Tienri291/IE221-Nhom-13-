@@ -83,9 +83,33 @@ def item_detail(request,slug):
     return render(request,'item_detail.html',{'item':item})
 
 def makeuppage(request):
+    p = Paginator(Product.objects.filter(collection = 1),10)
+    page = request.GET.get('page')
+    makeups = p.get_page(page)
+
     makeup_list = Product.objects.filter(collection = 1)
-    return render(request,'product.html',{'makeup_list': makeup_list})
+    brands = Product.objects.distinct().values('brand__title')
+    nations = Product.objects.distinct().values('nation__title')
+    return render(request, 'makeup_list.html', 
+    {   'makeup_list': makeup_list , 
+        'makeups': makeups,    
+        'brands': brands,
+        'nations': nations
+    })
 
+def skincarepage(request):
+    p = Paginator(Product.objects.filter(collection = 2),10)
+    page = request.GET.get('page')
+    makeups = p.get_page(page)
 
+    makeup_list = Product.objects.filter(collection = 2)
+    brands = Product.objects.distinct().values('brand__title')
+    nations = Product.objects.distinct().values('nation__title')
+    return render(request, 'skincare_list.html', 
+    {   'makeup_list': makeup_list , 
+        'makeups': makeups,    
+        'brands': brands,
+        'nations': nations
+    })
 
 #@login_required(login_url="login")

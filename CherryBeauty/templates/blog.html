@@ -50,17 +50,17 @@
 
   <div class = "row justify-center">
     <div class = "pagenum">
-      {% if posts.has_previous %}
+        {% if posts.has_previous %}
       <!--<a href = "?page=1"> &laquo First</a>-->
-      <button class = "pre_button" onclick="window.location='?page={{posts.previous_page_number}}'"><i class="fa-solid fa-angles-left"></i></button>
-    {% endif %}
+          <button class = "pre_button" onclick="window.location='?page={{posts.previous_page_number}}'"><i class="fa-solid fa-angles-left"></i></button>
+        {% endif %}
  
-    Page <strong style="color: #266DB6"> {{posts.number}} </strong> of <strong style="color: #266DB6"> {{posts.paginator.num_pages}} </strong>
+      Page <strong style="color: #266DB6"> {{posts.number}} </strong> of <strong style="color: #266DB6"> {{posts.paginator.num_pages}} </strong>
     
-    {% if posts.has_next %}
-      <button class = "next_button" onclick="window.location='?page={{posts.next_page_number}}'"><i class="fa-solid fa-angles-right"></i></button>
+      {% if posts.has_next %}
+        <button class = "next_button" onclick="window.location='?page={{posts.next_page_number}}'"><i class="fa-solid fa-angles-right"></i></button>
       <!--<a href = "?page={{posts.paginator.num_pages}}"> &laquo last</a>-->
-    {% endif %}
+      {% endif %}
     </div>
   </div>
 </div>
