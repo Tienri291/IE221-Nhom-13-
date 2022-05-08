@@ -40,6 +40,18 @@
             {% endfor %}
         </div> 
     </div>
+    <div class ="tagbox">
+        <div class="boxtitle"> 
+        <h2> Phân loại </h2>
+        </div>
+        <div class = "tag">
+            {% for tag in tags%}
+                <li>
+                    <input type="checkbox" />&nbsp; {{tag.tag__title}}
+                </li>
+            {% endfor %}
+        </div> 
+    </div>
 </div>
 </div>
 <div class = "col-9">

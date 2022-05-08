@@ -40,6 +40,18 @@
             {% endfor %}
         </div> 
     </div>
+    <div class ="tagbox">
+        <div class="boxtitle"> 
+        <h2> Phân loại </h2>
+        </div>
+        <div class = "tag">
+            {% for tag in tags%}
+                <li>
+                    <input type="checkbox" />&nbsp; {{tag.tag__title}}
+                </li>
+            {% endfor %}
+        </div> 
+    </div>
 </div>
 </div>
 <div class = "col-9">
@@ -74,13 +86,13 @@
         <div class = "pagenum">
             {% if makeups.has_previous %}
             <!--<a href = "?page=1"> &laquo First</a>-->
-             <button class = "pre_button" onclick="window.location='?page={{posts.previous_page_number}}'"><i class="fa-solid fa-angles-left"></i></button>
+             <button class = "pre_button" onclick="window.location='?page={{makeups.previous_page_number}}'"><i class="fa-solid fa-angles-left"></i></button>
             {% endif %}
  
             Page <strong style="color: #266DB6"> {{makeups.number}} </strong> of <strong style="color: #266DB6"> {{makeups.paginator.num_pages}} </strong>
     
             {% if makeups.has_next %}
-                <button class = "next_button" onclick="window.location='?page={{posts.next_page_number}}'"><i class="fa-solid fa-angles-right"></i></button>
+                <button class = "next_button" onclick="window.location='?page={{makeups.next_page_number}}'"><i class="fa-solid fa-angles-right"></i></button>
             <!--<a href = "?page={{posts.paginator.num_pages}}"> &laquo last</a>-->
             {% endif %}
         </div>

@@ -21,9 +21,12 @@ h2{
     right: 10px;
 }
 .item-list{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     gap: 10px;
     margin-bottom: 50px;
+    height: max-content;
 }
 .sanpham{
     border-radius: 10px;
@@ -35,11 +38,10 @@ h2{
     justify-items: center;
     gap:5px;
     height:max-content;
-    min-height: 420px;
 }
 .item{
     width: 280px;
-    height: 450px;
+    height: 430px;
     border: 0.5px solid #0E5776;
     border-radius: 10px;
 }
@@ -148,7 +150,7 @@ h2{
     margin-bottom: 10px;
 }
 
-.brandbox,.nationbox{
+.brandbox,.nationbox,.tagbox{
     width: 200px;
     height: max-content;
     min-height: 200px;
@@ -165,7 +167,7 @@ h2{
     color: white;
 }
 
-.brand,.nation{
+.brand,.nation,.tag{
     padding-left: 20px;
     padding-top: 10px;
 }

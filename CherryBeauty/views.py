@@ -15,7 +15,17 @@ from .form import CreateUserForm
 from django.contrib import messages
 # Create your views here.
 def home_page(request):
-    return render(request, 'home.html')
+    makeup_list = Product.objects.filter(collection = 1)
+    skincare_list = Product.objects.filter(collection = 2)
+    post_list = Post.objects.all()
+    brand_list = Brand.objects.all().order_by('-id')
+    return render(request, 'home.html',
+    {
+        'makeup_list': makeup_list,
+        'skincare_list':skincare_list,
+        'post_list': post_list,
+        'brand_list':brand_list
+    })
 
 def about_us(request):
     return render(request, 'about_us.html')
@@ -83,33 +93,43 @@ def item_detail(request,slug):
     return render(request,'item_detail.html',{'item':item})
 
 def makeuppage(request):
-    p = Paginator(Product.objects.filter(collection = 1),10)
+    p = Paginator(Product.objects.filter(collection = 1),12)
     page = request.GET.get('page')
     makeups = p.get_page(page)
 
     makeup_list = Product.objects.filter(collection = 1)
     brands = Product.objects.distinct().values('brand__title')
     nations = Product.objects.distinct().values('nation__title')
+    tags = Product.objects.distinct().values('tag__title')
     return render(request, 'makeup_list.html', 
     {   'makeup_list': makeup_list , 
         'makeups': makeups,    
         'brands': brands,
-        'nations': nations
+        'nations': nations,
+        'tags': tags
     })
 
 def skincarepage(request):
-    p = Paginator(Product.objects.filter(collection = 2),10)
+    p = Paginator(Product.objects.filter(collection = 2),12)
     page = request.GET.get('page')
     makeups = p.get_page(page)
 
     makeup_list = Product.objects.filter(collection = 2)
-    brands = Product.objects.distinct().values('brand__title')
-    nations = Product.objects.distinct().values('nation__title')
+    brands = Product.objects.distinct().values('brand__title','brand__id')
+    nations = Product.objects.distinct().values('nation__title','nation__id')
     return render(request, 'skincare_list.html', 
     {   'makeup_list': makeup_list , 
         'makeups': makeups,    
         'brands': brands,
         'nations': nations
     })
+
+
+def searchpage(request):
+    q = request.GET['q']
+    productdata = Product.objects.filter(title__icontains = q).order_by('-id')
+    blogdata = Post.objects.filter(title__icontains = q).order_by('-id')
+    return render(request,'search.html',{'productdata' : productdata, 'blogdata': blogdata})
+
 
 #@login_required(login_url="login")

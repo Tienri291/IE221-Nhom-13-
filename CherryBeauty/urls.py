@@ -4,6 +4,7 @@ from . import views
 #urlcof
 urlpatterns = [
     path('', views.home_page, name="home"),
+    path('search/',views.searchpage, name ="search"),
     path('aboutus/',views.about_us, name="aboutus"),
     path('support/',views.support, name="support"),
     path('register/',views.register, name="register"),

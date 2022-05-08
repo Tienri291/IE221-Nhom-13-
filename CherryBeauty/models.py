@@ -48,18 +48,23 @@ class Nation(models.Model):
     def __str__(self):
         return self.title
 
+class Tag(models.Model):
+    title = models.CharField(max_length=255) 
+    def __str__(self):
+        return self.title 
+
 class Product(models.Model):
     title = models.CharField(max_length=255)
     product_img = models.ImageField(null=True,blank=True, upload_to="product_img/") 
     slug = models.SlugField()
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag,on_delete=models.CASCADE,blank=True,null=True)
     info = RichTextField(blank=True,null=True) 
     price = models.DecimalField(decimal_places=3, max_digits=15)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE) 
     nation = models.ForeignKey(Nation, on_delete=models.CASCADE)
+    date_added = models.DateTimeField(auto_now_add=True,blank=True,null=True) 
     is_sell = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
-
-    
