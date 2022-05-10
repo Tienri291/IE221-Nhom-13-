@@ -87,7 +87,7 @@ form input{
     align-items:center;
     gap: 10px;
 }
-fieldset i{
+.fieldset i{
     color: #D84A8C;
     padding-right: 10px;
 }
@@ -139,4 +139,7 @@ fieldset i{
     list-style-type: none;
     color: red;
     font-size: 14px;
+}
+.error input{
+    border: 2px red solid;
 }

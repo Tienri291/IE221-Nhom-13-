@@ -68,7 +68,7 @@ h2{
     justify-content: center;
 }
 
-form input{
+form input[name="username"], form input[name="password"]{
     width: 400px;
     height: 45px;
 

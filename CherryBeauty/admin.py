@@ -1,5 +1,7 @@
+
 from django.contrib import admin
-from .models import Post,Collection,Brand,Nation,Product,Tag
+from .models import Comment,Customer, Order, Post,Collection,Brand,Nation,Product, ShippingAddress,Tag,OderItem,Like
+
 
 class PostAdmin(admin.ModelAdmin):
    list_display = ('id','title','header_image') 
@@ -20,3 +22,12 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ('is_sell',)
 admin.site.register(Product,ProductAdmin)
 
+class CustomerAdmin(admin.ModelAdmin):
+    list_display = ('id','user','name','email','phone_number')
+admin.site.register(Customer)
+
+admin.site.register(Order)
+admin.site.register(OderItem)
+admin.site.register(ShippingAddress)
+admin.site.register(Like)
+admin.site.register(Comment)

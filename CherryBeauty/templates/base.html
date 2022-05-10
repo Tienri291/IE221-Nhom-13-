@@ -44,13 +44,18 @@
                         <div class="col-3">
                             <div class="box justify-around">
                                 {% if user.is_authenticated %}
+
                                 <div class ="username">
-                                <button class ="profile"><i class="fa-solid fa-circle-user"></i></button>
+                                    {% if user.customer.profile_pic %}
+                                    <img class ="profileimg" src ="{{user.customer.profile_pic.url}}">
+                                    {% else %}
+                                    <button class ="profile"><i class="fa-solid fa-circle-user"></i></button>
+                                    {% endif %}
                                 <a href = "#"> {{user.get_username}}</a>
                                 </div>
-                                <button class ="cart"> 
-                                <i class="fa-solid fa-basket-shopping fa-lg"></i>
-                                </button>
+                                <a href= "{% url 'cart' %}"><button class ="cart" > 
+                                    <i class="fa-solid fa-basket-shopping fa-lg"></i>({{cartItems}})
+                                </button></a>
                                 <div class = "signout">
                                     <a href= "{% url 'logout' %}"><button class="header__DX" >Đăng xuất <i class="fa-solid fa-arrow-right-from-bracket"></i></button></a>
                                 </div>
@@ -60,6 +65,9 @@
 
                                 <button class="header__DK" onclick="register()">Đăng ký</button>
                                 <button class="header__DN" onclick="signin()">Đăng nhập</button>
+                                <a href= "{% url 'cart' %}"><button class ="cart" > 
+                                    <i class="fa-solid fa-basket-shopping fa-lg"></i>({{cartItems}})
+                                </button></a>
                                 {% endif %}
 
                             </div>

@@ -105,6 +105,12 @@ input[name="q"]{
     width: 26px;
     text-transform: none;
 }
+.username{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+}
 .username a{
     text-decoration: none;
     color: #9A1B65;
@@ -393,4 +399,9 @@ footer{
      text-align: left;
  }
 
- 
+.profileimg{
+    width: 35px;
+    height: 35px;
+    border-radius: 15px;
+}
+
