@@ -293,7 +293,7 @@ def searchpage(request):
     blogdata = Post.objects.filter(title__icontains = q).order_by('-id')
     return render(request,'search.html',{'productdata' : productdata, 'blogdata': blogdata, 'cartItems':cartItems})
 
-
+@login_required(login_url="login")
 def cartpage(request):
     if request.user.is_authenticated:
         customer = request.user.customer
