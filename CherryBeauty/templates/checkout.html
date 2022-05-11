@@ -93,8 +93,8 @@
     <div class="productlist">
         <h3 class="listtitle"> Danh sách sản phẩm </h3>
             <table>
-            <tr>
             {% for item in items%}
+            <tr>
                 <td>
                     <img src="{{item.product.product_img.url }}" class="productimg">
                 </td>
@@ -102,8 +102,8 @@
                 <td class="number-input">  x {{item.quantily}} </td>
                 <td class="itemprice" id='1'>{{item.product.price }}</td>
                 <td class="sumprice" id="num-price">{{order.get_cart_total}}</td>
-            {% endfor %}
             </tr>
+            {% endfor %}
             </table>
     </div>
     {% endif %}
