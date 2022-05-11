@@ -1,1 +1,2 @@
-web: gunicorn CherryBeauty.wsgi
+web: gunicorn IE221Group13.wsgi
+
