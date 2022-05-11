@@ -9,6 +9,8 @@ django-debug-toolbar = "*"
 whitenoise = "*"
 gunicorn = "*"
 decouple = "*"
+django-heroku = "*"
+python-decouple = "*"
 
 [dev-packages]
 
