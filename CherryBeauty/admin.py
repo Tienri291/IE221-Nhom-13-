@@ -18,13 +18,13 @@ admin.site.register(Tag,ProductAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id','title','collection','price','is_sell')
+    list_display = ('title','collection','price','is_sell')
     list_editable = ('is_sell',)
 admin.site.register(Product,ProductAdmin)
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('id','user','name','email','phone_number')
-admin.site.register(Customer)
+    list_display = ('user','name','email','phone_number')
+admin.site.register(Customer,CustomerAdmin)
 
 admin.site.register(Order)
 admin.site.register(OderItem)

@@ -37,7 +37,7 @@ def home_page(request):
     brand_list = Brand.objects.all().order_by('-id')
 
     if request.user.is_authenticated:
-        customer = request.user.customer
+        customer,created = Customer.objects.get_or_create(user=request.user)
         order,created = Order.objects.get_or_create(customer=customer,complete=False)
         items = order.oderitem_set.all()
         cartItems = order.get_cart_items
@@ -101,41 +101,26 @@ def brand(request):
         })
 
 def register(request):
-    form = CreateUserForm(request.POST)
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+    
+        if form.is_valid():
+            user = form.save()
+            Customer.objects.create(
+                user= user,
+                name = user.first_name + " " + user.last_name,
+                email = user.email,
+            )
+            messages.success(request, 'Tài khoản đã được tạo thành công!!')
 
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order,created = Order.objects.get_or_create(customer=customer,complete=False)
-        items = order.oderitem_set.all()
-        cartItems = order.get_cart_items
+            return redirect('login')
     else:
-        items=[]
-        order={'get_cart_total':0,'get_cart_items':0}
-        cartItems= order['get_cart_items']
+        form = CreateUserForm()
 
-
-    if form.is_valid():
-        form.save()
-        user = form.cleaned_data.get('username')
-        messages.success(request, 'Tài khoản đã được tạo với tên đăng nhập: ' + user)
-
-        return redirect('login')
-
-    context = {'form':form,'cartItems':cartItems}
+    context = {'form':form}
     return render(request,'register.html',context)
 
 def log_in(request):
-
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order,created = Order.objects.get_or_create(customer=customer,complete=False)
-        items = order.oderitem_set.all()
-        cartItems = order.get_cart_items
-    else:
-        items=[]
-        order={'get_cart_total':0,'get_cart_items':0}
-        cartItems= order['get_cart_items']
-
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -145,10 +130,13 @@ def log_in(request):
 
         if user is not None:
             login(request,user)
+
             return redirect('home')
 
+        else:
+            messages.info(request, 'Bạn đã nhập sai tên đăng nhập hoặc mật khẩu ')
 
-    context = {'cartItems':cartItems}
+    context = {}
     return render(request,'log_in.html',context) 
 
 def logoutUser(request):
@@ -388,6 +376,14 @@ def LikeView(request,slug):
         like.save()
     return HttpResponseRedirect(reverse('article_detail',args= [str(slug)]))
 
+@login_required(login_url="login")
+def userPage(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+
+    context={'customer':customer}
+    return render(request,'customer_info.html',context)
+
 class AddComment(CreateView):
     model = Comment
     form_class = CommentForm
@@ -399,3 +395,5 @@ class AddComment(CreateView):
     success_url = reverse_lazy('home')
 
 #@login_required(login_url="login")
+
+

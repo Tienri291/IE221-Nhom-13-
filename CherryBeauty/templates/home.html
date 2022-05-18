@@ -24,6 +24,7 @@
         <div class ="container-list">
     <div class = "makeuplist">
         <div class="owl-carousel">
+        {% if makeup_list %}
            {% for item in makeup_list %}
            <div class ="sanpham">
                     <div class="sp_img">
@@ -44,7 +45,8 @@
                     <button class="more" onclick="window.location='{% url 'item_detail' item.slug %}'"> Xem thêm </button>
                     </div>
             </div>
-            {% endfor %}        
+            {% endfor %}  
+            {% endif %}      
         </div>
         <button class = "showall" onclick="makeupshow()">Xem tất cả  <i class="fa-solid fa-angle-right"></i> </button>
     </div>
@@ -56,6 +58,7 @@
             <div class ="container-list">
                 <div class = "skincarelist">
                     <div class="owl-carousel">
+                        {% if skincare_list %}
                        {% for item in skincare_list %}
                        <div class ="sanpham">
                                 <div class="sp_img">
@@ -76,7 +79,8 @@
                                 <button class="more" onclick="window.location='{% url 'item_detail' item.slug %}'"> Xem thêm </button>
                                 </div>
                         </div>
-                        {% endfor %}        
+                        {% endfor %} 
+                        {% endif %}    
                     </div>
                     <button class = "showall" onclick="skincareshow()">Xem tất cả <i class="fa-solid fa-angle-right"></i></button>
                 </div>
@@ -88,6 +92,7 @@
                 <div class ="container-list">
                     <div class = "postlist">
                         <div class="owl-carousel">
+                            {% if post_list %}
                            {% for post in post_list %}
                            <div class ="post">
                                     <div class="sp_img">
@@ -105,7 +110,8 @@
                                     <button class="more" onclick="window.location='{% url 'article_detail' post.slug %}'"> Xem thêm </button>
                                     </div>
                             </div>
-                            {% endfor %}        
+                            {% endfor %}
+                            {% endif %}        
                         </div>
                         <button class = "showall" onclick="blogshow()">Xem tất cả <i class="fa-solid fa-angle-right"></i></button>
                     </div>
@@ -114,6 +120,7 @@
 
     <div class ="brand_list">
         <div class="brand_item">
+            {% if brand_list%}
             {% for brand in brand_list%}
         
             <div class="boxs">
@@ -125,6 +132,7 @@
             </div>
     
             {% endfor %}
+            {% endif %}
         </div>
 
     </div>

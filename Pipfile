@@ -8,9 +8,9 @@ django = "*"
 django-debug-toolbar = "*"
 whitenoise = "*"
 gunicorn = "*"
-decouple = "*"
 django-heroku = "*"
-python-decouple = "*"
+pillow = "==8.3.2"
+django-ckeditor = "*"
 
 [dev-packages]
 

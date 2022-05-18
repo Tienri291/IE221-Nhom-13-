@@ -23,7 +23,7 @@
         <div class = "brand">
             {% for brand in brands%}
                 <li>
-                    <input type="checkbox" />&nbsp; {{brand.brand__title}}
+                    <input type="checkbox" class="filter-checkbox" data-filter = "brand" value = "{{brand.brand__title}}"/>&nbsp; {{brand.brand__title}}
                 </li>
             {% endfor %}
         </div>
@@ -35,7 +35,7 @@
         <div class = "nation">
             {% for nation in nations%}
                 <li>
-                    <input type="checkbox" />&nbsp; {{nation.nation__title}}
+                    <input type="checkbox" class="filter-checkbox" data-filter = "nation" value = "{{nation.nation__title}}"/>&nbsp; {{nation.nation__title}}
                 </li>
             {% endfor %}
         </div> 
@@ -47,7 +47,7 @@
         <div class = "tag">
             {% for tag in tags%}
                 <li>
-                    <input type="checkbox" />&nbsp; {{tag.tag__title}}
+                    <input type="checkbox" class="filter-checkbox" data-filter = "tag" value = "{{tag.tag__title}}"/>&nbsp; {{tag.tag__title}}
                 </li>
             {% endfor %}
         </div> 
@@ -104,4 +104,5 @@
 {% endblock %}
 
 {% block linkjs %}
+<script src="{%static "js/product-filter.js" %}"></script>
 {% endblock %}

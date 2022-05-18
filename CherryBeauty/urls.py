@@ -2,6 +2,7 @@ from django.forms import forms
 from django.urls import path
 from . import views
 from .views import AddComment
+
 #urlcof
 urlpatterns = [
     path('base/', views.base, name="base"),
@@ -21,10 +22,9 @@ urlpatterns = [
     path('cart/',views.cartpage,name="cart"),
     path('checkout/',views.checkoutpage,name="checkout"),
     path('update_item/',views.updateItem,name="update_item"),
+    path('userinfo/',views.userPage,name="userpage"),
     path('acticle/<slug:slug>/comment',AddComment.as_view(),name="add_comment"),
     path('sanpham/<slug:item_slug>/',views.item_detail,name="item_detail"),
     path('blog/<slug:slug>/',views.article_detail,name="article_detail"),
-    
-
 ]
 

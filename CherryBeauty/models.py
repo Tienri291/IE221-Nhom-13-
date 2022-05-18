@@ -1,11 +1,12 @@
 
+from ast import mod
 import profile
 from django.db import models
-from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import RichTextUploadingField
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.db.models import Model
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Post(models.Model):
@@ -43,6 +44,9 @@ class Like(models.Model):
     def __str__(self):
         return str(self.post)
 
+
+
+
 class Collection(models.Model):
     title = models.CharField(max_length=255)
 
@@ -73,8 +77,8 @@ class Product(models.Model):
     slug = models.SlugField()
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag,on_delete=models.CASCADE,blank=True,null=True)
-    info = RichTextField(blank=True,null=True)
-    body = RichTextUploadingField(blank=True,null=True) 
+    info = models.TextField(blank=True,null=True)
+    body = models.TextField(blank=True,null=True)
     price = models.DecimalField(decimal_places=3, max_digits=15)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE) 
     nation = models.ForeignKey(Nation, on_delete=models.CASCADE)
@@ -83,6 +87,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)

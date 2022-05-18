@@ -16,6 +16,7 @@
 <div class="container-lg">
     <div class="content">
         <div class="row">
+        {% if post%}
             <h1 class="articaletitle">{{post.title}}</h1>
         </div>
         <hr class="new1">
@@ -40,6 +41,7 @@
         {% endif %}
         - {{post.total_likes}} likes 
     </form>
+    {% endif %}
     {% endif %}
     </div>
     
