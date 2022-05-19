@@ -4,3 +4,4 @@ Website ứng dụng Django Framework - Cherry Beauty - bán mỹ phẩm
 File word-powerpoint-videodemo nằm trong folder "word-ppt-demo"
 
 Link website : https://cherrybeauty11.herokuapp.com/ 
+Link video demo: https://drive.google.com/file/d/1YGAi_U_j3m-hE3QL7ZqFGbYXnQTjzLaX/view?usp=sharing
