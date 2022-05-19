@@ -173,9 +173,24 @@ def article_detail(request,slug):
         items=[]
         order={'get_cart_total':0,'get_cart_items':0}
         cartItems= order['get_cart_items']
+    
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+    
+        if form.is_valid():
+           post = Post.objects.get(slug = slug)
+           form.instance.user = request.user
+           form.instance.post = post
+           form.save()
+
+           return redirect(reverse("post",{'slug':post.slug}))
+
+    else:
+        form = CommentForm()
 
     user = request.user
-    return render(request, 'article_detail.html', {'post':article,'cartItems':cartItems,'user':user}) 
+    return render(request, 'article_detail.html', {'post':article,'cartItems':cartItems,'user':user,'form':form}) 
 
 
 
@@ -389,10 +404,10 @@ class AddComment(CreateView):
     form_class = CommentForm
     template_name = 'add_comment.html'
     def form_invalid(self, form):
-        form.instance.post_id = self.kwargs['pk']
+        form.instance.post_id = self.kwargs['slug']
         return super().form_invalid(form)
     #fields = '__all__'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('article_detail')
 
 #@login_required(login_url="login")
 

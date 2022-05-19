@@ -50,9 +50,10 @@
     <div class = "comment">
         <h2> Bình luận </h2>
         <hr>
+        <a href = "{% url 'add_comment' post.slug %}"> Thêm bình luận </a>
+        <div>
         {% if not post.comments.all%}
             <p style="text-align:center; margin-top:5px">Hiện bài viết chưa có bình luận nào </p>
-            <a href = "{% url 'add_comment' post.slug %}"> Add comment </a>
         {% else %}
             {% for comment in post.comments.all%}
                 <strong> {{comment.name}} </strong>
@@ -63,6 +64,7 @@
                 <hr class="new3">
             {% endfor %}
         {% endif %}
+        </div>
     </div>
 </div>
 

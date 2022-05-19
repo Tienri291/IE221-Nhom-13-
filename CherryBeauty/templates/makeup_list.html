@@ -73,7 +73,7 @@
             <p class="price"><em>{{makeup.price}} VNĐ</em></p>
         </div>
         <div class="addcartdiv">
-            <button class="addcart"><i class="fa-solid fa-basket-shopping fa-lg"></i>Thêm vào giỏ hàng</button>
+            <button data-product="{{item.id}}" data-action="add" class="addcart update-cart"><i class="fa-solid fa-basket-shopping fa-lg"></i>Thêm vào giỏ hàng</button>
         </div>
         <div class="morediv">
             <button class="more" onclick="window.location='{% url 'item_detail' makeup.slug %}'"> Xem thêm </button>
@@ -104,5 +104,6 @@
 {% endblock %}
 
 {% block linkjs %}
+<script src="{%static "js/cart.js" %}"></script>
 <script src="{%static "js/product-filter.js" %}"></script>
 {% endblock %}
