@@ -1,7 +1,7 @@
 # IE221-Nhom-13
 Website ứng dụng Django Framework - Cherry Beauty - bán mỹ phẩm
 
-File word đồ án và word đăng kí đồ án nằm trong folder "word"
+File word đồ án và word đăng kí đồ án nằm trong folder "word-ppt-demo"
 
 Link website : https://cherrybeauty11.herokuapp.com/ 
 
