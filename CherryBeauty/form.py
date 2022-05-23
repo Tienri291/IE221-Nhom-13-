@@ -7,14 +7,55 @@ from django import forms
 from .models import Comment
 
 class CreateUserForm(UserCreationForm):
+
+    """
+    Lớp tạo form đăng kí
+
+    ...
+
+    Thuộc tính
+    ----------
+    first_name : str
+        họ và tên đệm của người dùng
+    last_name : str
+        tên của người dùng
+
+    Phương thức
+    -------
+    clean_password2():
+        Kiểm tra password2 có giống password1 không.
+    
+    clean_email():
+        Kiểm tra email đã tồn tại hay chưa.
+    """
+
+
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=50)
     
     class Meta:
+
+        """
+        Lớp dữ liệu
+
+        ...
+
+        Thuộc tính
+        ----------
+        model : model.User
+            Dữ liệu bảng User
+        fields : field
+            các trường dữ liệu
+
+        """
+
         model = User
         fields = ('first_name','last_name','username', 'email', 'password1', 'password2')
 
     def clean_password2(self):
+
+        '''So sánh password1 và password2, returns password2 '''
+
         if 'password1' in self.cleaned_data:
             password1 = self.cleaned_data['password1']
             password2 = self.cleaned_data['password2']
@@ -38,19 +79,9 @@ class CreateUserForm(UserCreationForm):
         #    raise forms.ValidationError("Tên đăng nhập không quá 15 kí tự")
 
     def clean_email(self):
+
+        '''Kiểm tra email đã tồn tại hay chưa '''
+
         if User.objects.filter(username = self.cleaned_data['email']):
             raise forms.ValidationError("Email đã được đăng kí")
 
-
-class CommentForm(forms.ModelForm):
-    body = forms.CharField(widget=forms.Textarea(attrs={
-        'rows' : '4',
-    }))
-    class Meta:
-        model = Comment
-        fields = ('name','body')
-
-        widgets = {
-            'Name' : forms.TextInput(attrs={'class':'form-control'}),
-            'body' : forms.Textarea(attrs={'class':'form-control'}),
-        }
