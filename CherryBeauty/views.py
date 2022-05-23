@@ -18,6 +18,10 @@ from django.http import JsonResponse, HttpResponseRedirect
 import json
 # Create your views here.
 def base(request):
+    '''
+    Trả về trang base (header & footer)
+    '''
+
     if request.user.is_authenticated:
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer=customer,complete=False)
@@ -31,6 +35,11 @@ def base(request):
     return render(request, 'base.html',{'cartItems':cartItems}) 
 
 def home_page(request):
+
+    '''
+    Trả về trang chủ
+    '''
+
     makeup_list = Product.objects.filter(collection = 1)
     skincare_list = Product.objects.filter(collection = 2)
     post_list = Post.objects.all()
@@ -56,6 +65,11 @@ def home_page(request):
     })
 
 def about_us(request):
+
+    '''
+    Trả về trang giới thiệu 
+    '''
+
     if request.user.is_authenticated:
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer=customer,complete=False)
@@ -70,6 +84,11 @@ def about_us(request):
 
 
 def support(request):
+    
+    '''
+    Trả về trang hỗ trợ
+    '''
+    
     if request.user.is_authenticated:
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer=customer,complete=False)
@@ -83,6 +102,11 @@ def support(request):
     return render(request,'support.html',{'cartItems':cartItems})
 
 def brand(request):
+    
+    '''
+    Trả về trang thương hiệu
+    '''
+    
     brand_list = Brand.objects.all()
 
     if request.user.is_authenticated:
@@ -101,6 +125,11 @@ def brand(request):
         })
 
 def register(request):
+    
+    '''
+    Trả về trang đăng kí
+    '''
+    
     if request.method == "POST":
         form = CreateUserForm(request.POST)
     
@@ -121,6 +150,11 @@ def register(request):
     return render(request,'register.html',context)
 
 def log_in(request):
+    
+    '''
+    Đăng nhập tài khoản khách hàng nếu đúng trả về trang chủ
+    '''
+    
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -140,10 +174,20 @@ def log_in(request):
     return render(request,'log_in.html',context) 
 
 def logoutUser(request):
+    
+    '''
+    Trả về trang đăng nhập
+    '''
+    
     logout(request)
     return redirect('login')
 
 def blog_page(request):
+
+    '''
+    Trả về trang blog
+    '''
+
     if request.user.is_authenticated:
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer=customer,complete=False)
@@ -162,6 +206,11 @@ def blog_page(request):
     return render(request, 'blog.html', {'posts_list': posts_list , 'posts': posts, 'cartItems':cartItems})
 
 def article_detail(request,slug):
+
+    '''
+    Trả về trang bài viết
+    '''
+
     article = Post.objects.get(slug = slug)
 
     if request.user.is_authenticated:
@@ -195,6 +244,11 @@ def article_detail(request,slug):
 
 
 def product_page(request):
+
+    '''
+    Trả về trang sản phẩm
+    '''
+
     if request.user.is_authenticated:
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer=customer,complete=False)
@@ -210,6 +264,11 @@ def product_page(request):
     return render(request,'product.html',{'makeup_list': makeup_list,'skincare_list': skincare_list,'cartItems':cartItems})
 
 def item_detail(request,item_slug):
+    
+    '''
+    Trả về trang chi tiết sản phẩm
+    '''
+    
     item = Product.objects.get(slug = item_slug)
 
     if request.user.is_authenticated:
@@ -226,6 +285,11 @@ def item_detail(request,item_slug):
     return render(request,'item_detail.html',{'item':item,'cartItems':cartItems})
 
 def makeuppage(request):
+    
+    '''
+    Trả về trang danh sách trang điểm
+    '''
+    
     if request.user.is_authenticated:
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer=customer,complete=False)
@@ -254,6 +318,11 @@ def makeuppage(request):
     })
 
 def skincarepage(request):
+    
+    '''
+    Trả về trang danh sách chăm sóc da
+    '''
+    
     if request.user.is_authenticated:
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer=customer,complete=False)
@@ -281,6 +350,11 @@ def skincarepage(request):
 
 
 def searchpage(request):
+    
+    '''
+    Trả về trang sản phẩm theo cụm từ đã search
+    '''
+    
     if request.user.is_authenticated:
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer=customer,complete=False)
@@ -298,6 +372,11 @@ def searchpage(request):
 
 @login_required(login_url="login")
 def cartpage(request):
+    
+    '''
+    Trả về trang giỏ hàng
+    '''
+    
     if request.user.is_authenticated:
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer=customer,complete=False)
@@ -312,6 +391,11 @@ def cartpage(request):
 
 
 def checkoutpage(request):
+    
+    '''
+    Trả về trang thanh toán
+    '''
+    
     if request.user.is_authenticated:
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer=customer,complete=False)
@@ -329,6 +413,11 @@ def checkoutpage(request):
     return render(request,'checkout.html',{'customer':customer,'items':items,'order':order, 'cartItems':cartItems})
 
 def updateItem(request):
+    
+    '''
+    Trả về tăng giảm sản phẩm
+    '''
+    
     data = json.loads(request.body)
     productId = data['productId']
     action = data['action']
@@ -369,6 +458,11 @@ def updateItem(request):
 #    return HttpResponseRedirect(reverse('article_detail',args= [str(slug)]))
 
 def LikeView(request,slug):
+    
+    '''
+    Trả về trang bài viết
+    '''
+    
     user = request.user
     if request.method == 'POST':
         post_id = request.POST.get('post_id')
@@ -393,6 +487,11 @@ def LikeView(request,slug):
 
 @login_required(login_url="login")
 def userPage(request):
+    
+    '''
+    Trả về trang tài khoản khách hàng
+    '''
+    
     if request.user.is_authenticated:
         customer = request.user.customer
 
